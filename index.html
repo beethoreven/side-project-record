@@ -1,4 +1,5 @@
 <title>Arthur Shen AI Side Projects</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -313,6 +314,61 @@ ul.points { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-d
   border: 1px solid var(--rule-strong);
   border-radius: 3px;
   box-shadow: 0 10px 24px -12px rgba(90, 40, 50, .4);
+}
+.shot img { cursor: zoom-in; }
+.shot img:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.zoom-hint {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 12px/1 var(--sans);
+  color: var(--on-goose);
+  background: var(--goose);
+  border: 1px solid var(--goose-line);
+  border-radius: 3px;
+  padding: 6px 10px;
+  pointer-events: none;
+}
+.shot { position: relative; }
+
+/* lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(20px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: rgba(30, 14, 18, .86);
+  overflow: auto;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  margin: auto;
+  border-radius: 3px;
+  box-shadow: 0 20px 60px -10px rgba(0, 0, 0, .6);
+  cursor: zoom-out;
+}
+.lightbox .close {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top, 0px));
+  right: max(14px, env(safe-area-inset-right, 0px));
+  font: 700 14px/1 var(--sans);
+  color: var(--on-goose);
+  background: var(--goose);
+  border: 1px solid var(--goose-line);
+  border-radius: 3px;
+  padding: 10px 16px;
+  cursor: pointer;
 }
 .shot.empty-shot {
   background: transparent;
@@ -630,6 +686,47 @@ body[data-lang="zh"] .en { display: none !important; }
   });
   var h = (location.hash || '').replace('#', '');
   setLang(h === 'zh' ? 'zh' : 'en', false);
+
+  /* screenshot zoom */
+  var box = document.createElement('div');
+  box.className = 'lightbox';
+  box.hidden = true;
+  box.setAttribute('role', 'dialog');
+  box.setAttribute('aria-modal', 'true');
+  box.innerHTML = '<img alt=""><button type="button" class="close">Close ✕</button>';
+  document.body.appendChild(box);
+  var bigImg = box.querySelector('img');
+  var closeBtn = box.querySelector('.close');
+  var opener = null;
+  function openZoom(img) {
+    opener = img;
+    bigImg.src = img.currentSrc || img.src;
+    bigImg.alt = img.alt;
+    box.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function closeZoom() {
+    box.hidden = true;
+    document.documentElement.style.overflow = '';
+    if (opener) opener.focus();
+  }
+  document.querySelectorAll('.shot img').forEach(function (img) {
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', img.alt + ' (click to enlarge)');
+    img.addEventListener('click', function () { openZoom(img); });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openZoom(img); }
+    });
+    var hint = document.createElement('span');
+    hint.className = 'zoom-hint';
+    hint.innerHTML = '<span class="en" lang="en">Enlarge</span><span class="zh" lang="zh">放大</span><span aria-hidden="true">⤢</span>';
+    img.parentNode.appendChild(hint);
+  });
+  box.addEventListener('click', function (e) { if (e.target !== closeBtn) closeZoom(); });
+  closeBtn.addEventListener('click', closeZoom);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) closeZoom(); });
 })();
 </script>
 </body>
