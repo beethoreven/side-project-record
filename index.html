@@ -385,8 +385,8 @@ body[data-lang="zh"] .en { display: none !important; }
       <span>
         <span class="en" lang="en">GitHub </span><span class="zh" lang="zh">GitHub </span><a href="https://github.com/beethoreven?tab=repositories&q=&type=&language=&sort=name" target="_blank" rel="noopener">github.com/beethoreven</a>
       </span>
-      <span class="en" lang="en">4 live demos · 1 in progress</span>
-      <span class="zh" lang="zh">4 個展示 · 1 個撰寫中</span>
+      <span class="en" lang="en">5 projects · 4 live demos</span>
+      <span class="zh" lang="zh">5 個專案 · 4 個展示</span>
     </div>
   </header>
 
@@ -397,7 +397,7 @@ body[data-lang="zh"] .en { display: none !important; }
       <li><a href="#zh-cn-to-tw"><span class="n"><span class="en" lang="en">zh-cn-to-tw</span><span class="zh" lang="zh">繁化助手</span></span><span class="s"><span class="en" lang="en">繁化助手</span><span class="zh" lang="zh">zh-cn-to-tw</span></span></a></li>
       <li><a href="#boo-king-king"><span class="n"><span class="en" lang="en">boo-king-king</span><span class="zh" lang="zh">步經徑</span></span><span class="s"><span class="en" lang="en">步經徑</span><span class="zh" lang="zh">boo-king-king</span></span></a></li>
       <li><a href="#group-judge"><span class="n"><span class="en" lang="en">group-judge</span><span class="zh" lang="zh">小判官</span></span><span class="s"><span class="en" lang="en">小判官</span><span class="zh" lang="zh">group-judge</span></span></a></li>
-      <li class="soon"><a href="#mama-fufood"><span class="n"><span class="en" lang="en">mama-fufood</span><span class="zh" lang="zh">媽媽記副食品</span></span><span class="s"><span class="en" lang="en">媽媽記副食品</span><span class="zh" lang="zh">mama-fufood</span></span></a></li>
+      <li><a href="#mama-fufood"><span class="n"><span class="en" lang="en">mama-fufood</span><span class="zh" lang="zh">媽媽記副食品</span></span><span class="s"><span class="en" lang="en">媽媽記副食品</span><span class="zh" lang="zh">mama-fufood</span></span></a></li>
     </ul>
   </nav>
 
@@ -470,7 +470,7 @@ body[data-lang="zh"] .en { display: none !important; }
         </div>
         <div class="links">
           <div class="link-row">
-            <a class="btn" href="https://beethoreven.github.io/zh-cn-to-tw-web/" target="_blank" rel="noopener"><span class="en" lang="en">Open demo</span><span class="zh" lang="zh">開啟展示</span><span aria-hidden="true">↗</span></a>
+            <a class="btn" href="https://beethoreven.github.io/zh-cn-to-tw-web/" target="_blank" rel="noopener"><span class="en" lang="en">Download page</span><span class="zh" lang="zh">下載頁面</span><span aria-hidden="true">↗</span></a>
             <span class="url">beethoreven.github.io/zh-cn-to-tw-web</span>
           </div>
           <div class="link-row">
@@ -562,20 +562,49 @@ body[data-lang="zh"] .en { display: none !important; }
       <figure class="shot"><img src="img/group-judge.png" alt="group-judge LINE bot screenshot / 小判官 LINE 對話畫面" loading="lazy"></figure>
     </article>
 
-    <!-- mama-fufood placeholder -->
-    <article class="project soon" id="mama-fufood">
+    <!-- mama-fufood -->
+    <article class="project" id="mama-fufood">
       <div class="content">
         <div class="head">
           <span class="eyebrow"><span class="en" lang="en">媽媽記副食品</span><span class="zh" lang="zh">mama-fufood</span></span>
           <h2><span class="en" lang="en">mama-fufood</span><span class="zh" lang="zh">媽媽記副食品</span></h2>
-          <span class="status"><span class="en" lang="en">IN PROGRESS</span><span class="zh" lang="zh">撰寫中</span></span>
+          <p class="desc">
+            <span class="en" lang="en">An Android app for logging a baby's first foods.</span>
+            <span class="zh" lang="zh">記錄寶寶副食品的 Android App</span>
+          </p>
+          <ul class="tags"><li class="tag">Flutter</li><li class="tag">Google Drive API</li><li class="tag">AES-256-GCM</li><li class="tag">Flask</li><li class="tag">PostgreSQL</li><li class="tag">git submodule</li></ul>
         </div>
-        <p class="empty">
-          <span class="en" lang="en">Description, highlights and demo link will be added here.</span>
-          <span class="zh" lang="zh">專案說明、重點與展示連結將補充於此。</span>
-        </p>
+        <div>
+          <span class="label"><span class="en" lang="en">What I built</span><span class="zh" lang="zh">實作內容</span></span>
+          <ul class="points en" lang="en">
+            <li>Built offline-first sync to the user's own Google Drive app-data folder, with metadata-only diffing and content-based conflict resolution.</li>
+            <li>Encrypted export/import in 1 MiB authenticated segments; the key lives only in the user's Drive.</li>
+            <li>Privacy by design: baby records never reach the server, which stores only public reference data and user-submitted feedback.</li>
+            <li>Served public datasets from an in-memory cache rebuilt from PostgreSQL. Rejected invalid tokens before any work, and enforced per-account daily quotas and request-size limits.</li>
+          </ul>
+          <ul class="points zh" lang="zh">
+            <li>實作離線優先的同步，資料存到使用者自己的 Google Drive App 專用區，只比對中繼資料找出變動，並以內容判定衝突。</li>
+            <li>匯出檔以每段 1 MiB 分段加密並驗證完整性，金鑰只存在使用者自己的 Drive。</li>
+            <li>隱私優先設計：寶寶紀錄不經過伺服器，後端只存公用資料與使用者送出的意見回饋。</li>
+            <li>公用資料由 PostgreSQL 重建的記憶體快取提供。無效憑證在處理前即拒絕，並設每帳號每日次數上限與請求大小限制。</li>
+          </ul>
+        </div>
+        <div class="links">
+          <div class="link-row en" lang="en">
+            <a class="btn" href="https://beethoreven.github.io/mama-fufood-web/demo-en/" target="_blank" rel="noopener">Open demo <span aria-hidden="true">↗</span></a>
+            <span class="url">beethoreven.github.io/mama-fufood-web/demo-en</span>
+          </div>
+          <div class="link-row zh" lang="zh">
+            <a class="btn" href="https://beethoreven.github.io/mama-fufood-web/demo/" target="_blank" rel="noopener">開啟展示 <span aria-hidden="true">↗</span></a>
+            <span class="url">beethoreven.github.io/mama-fufood-web/demo</span>
+          </div>
+          <div class="link-row">
+            <span class="repo-k">Meta repo</span>
+            <a class="repo-url" href="https://github.com/beethoreven/mama-fufood" target="_blank" rel="noopener">github.com/beethoreven/mama-fufood</a>
+          </div>
+        </div>
       </div>
-      <div class="shot empty-shot"><span><span class="en" lang="en">Screenshot coming soon</span><span class="zh" lang="zh">圖片待補</span></span></div>
+      <figure class="shot"><img src="img/mama-fufood.webp" alt="mama-fufood calendar screen / 媽媽記副食品行事曆畫面" loading="lazy"></figure>
     </article>
   </main>
 
