@@ -441,8 +441,8 @@ body[data-lang="zh"] .en { display: none !important; }
       <span>
         <span class="en" lang="en">GitHub </span><span class="zh" lang="zh">GitHub </span><a href="https://github.com/beethoreven?tab=repositories&q=&type=&language=&sort=name" target="_blank" rel="noopener">github.com/beethoreven</a>
       </span>
-      <span class="en" lang="en">5 projects · 4 live demos</span>
-      <span class="zh" lang="zh">5 個專案 · 4 個展示</span>
+      <span class="en" lang="en">6 projects · 5 live demos</span>
+      <span class="zh" lang="zh">6 個專案 · 5 個展示</span>
     </div>
   </header>
 
@@ -454,6 +454,7 @@ body[data-lang="zh"] .en { display: none !important; }
       <li><a href="#boo-king-king"><span class="n"><span class="en" lang="en">boo-king-king</span><span class="zh" lang="zh">步經徑</span></span><span class="s"><span class="en" lang="en">步經徑</span><span class="zh" lang="zh">boo-king-king</span></span></a></li>
       <li><a href="#group-judge"><span class="n"><span class="en" lang="en">group-judge</span><span class="zh" lang="zh">小判官</span></span><span class="s"><span class="en" lang="en">小判官</span><span class="zh" lang="zh">group-judge</span></span></a></li>
       <li><a href="#mama-fufood"><span class="n"><span class="en" lang="en">mama-fufood</span><span class="zh" lang="zh">媽媽記副食品</span></span><span class="s"><span class="en" lang="en">媽媽記副食品</span><span class="zh" lang="zh">mama-fufood</span></span></a></li>
+      <li><a href="#all-mo-diary"><span class="n"><span class="en" lang="en">all-mo-diary</span><span class="zh" lang="zh">全心日記</span></span><span class="s"><span class="en" lang="en">全心日記</span><span class="zh" lang="zh">all-mo-diary</span></span></a></li>
     </ul>
   </nav>
 
@@ -661,6 +662,49 @@ body[data-lang="zh"] .en { display: none !important; }
         </div>
       </div>
       <figure class="shot"><img src="img/mama-fufood.webp" alt="mama-fufood calendar screen / 媽媽記副食品行事曆畫面" loading="lazy"></figure>
+    </article>
+
+    <!-- all-mo-diary -->
+    <article class="project" id="all-mo-diary">
+      <div class="content">
+        <div class="head">
+          <span class="eyebrow"><span class="en" lang="en">全心日記</span><span class="zh" lang="zh">all-mo-diary</span></span>
+          <h2><span class="en" lang="en">all-mo-diary</span><span class="zh" lang="zh">全心日記</span></h2>
+          <p class="desc">
+            <span class="en" lang="en">An Android diary app: one entry a day, with photos and videos.</span>
+            <span class="zh" lang="zh">一天一篇，可以放圖片與影片的日記 Android App</span>
+          </p>
+          <ul class="tags"><li class="tag">Flutter</li><li class="tag">Flask</li><li class="tag">PostgreSQL</li><li class="tag">Render</li><li class="tag">GitHub Releases</li><li class="tag">git submodule</li></ul>
+        </div>
+        <div>
+          <span class="label"><span class="en" lang="en">What I built</span><span class="zh" lang="zh">實作內容</span></span>
+          <ul class="points en" lang="en">
+            <li>Compressed videos on the phone before storing them, using the phone's built-in encoder rather than bundling one in the app, to save space.</li>
+            <li>Offered free, commercially usable fonts that users can choose to install, pre-compressed by sharing stroke outlines between characters to about half their size. The app also flags characters a font lacks.</li>
+            <li>Merged the backends of several personal projects into one Router Backend. Its structure keeps permissions and data from crossing between projects, so one service serves them all and saves Render's free service quota.</li>
+          </ul>
+          <ul class="points zh" lang="zh">
+            <li>使用手機內建的編碼器，在手機端壓縮影片才儲存，不另外包進 App，減少空間消耗。</li>
+            <li>提供提前進行「共用筆畫輪廓壓縮」的可商用免費的字體讓使用者自行安裝。字體檔約為原本的一半，且不強迫使用者安裝。還有缺字提醒。</li>
+            <li>多個個人專案的後端合併成同一個Router Backend。從結構上切割權限與資料的跨越，於應用上實現一個service服務多個專案，節省Render的免費service額度。</li>
+          </ul>
+        </div>
+        <div class="links">
+          <div class="link-row en" lang="en">
+            <a class="btn" href="https://all-mo-diary.github.io/all-mo-diary-web/demo-en/" target="_blank" rel="noopener">Open demo <span aria-hidden="true">↗</span></a>
+            <span class="url">all-mo-diary.github.io/all-mo-diary-web/demo-en</span>
+          </div>
+          <div class="link-row zh" lang="zh">
+            <a class="btn" href="https://all-mo-diary.github.io/all-mo-diary-web/demo/" target="_blank" rel="noopener">開啟展示 <span aria-hidden="true">↗</span></a>
+            <span class="url">all-mo-diary.github.io/all-mo-diary-web/demo</span>
+          </div>
+          <div class="link-row">
+            <span class="repo-k">Meta repo</span>
+            <a class="repo-url" href="https://github.com/beethoreven/all-mo-diary" target="_blank" rel="noopener">github.com/beethoreven/all-mo-diary</a>
+          </div>
+        </div>
+      </div>
+      <figure class="shot"><img src="img/all-mo-diary.png" alt="all-mo-diary editor screen / 全心日記編輯畫面" loading="lazy"></figure>
     </article>
   </main>
 
